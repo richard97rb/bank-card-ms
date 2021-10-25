@@ -21,8 +21,8 @@ public class CardController {
 	private CardService cardService;
 	
 	@GetMapping(value="/api/v1/cards")
-	@ResponseBody List<Card> getCard(){
-		return cardService.getCard();
+	@ResponseBody List<Card> getCards(){
+		return cardService.getCards();
 	}
 
 	@PostMapping(value="/api/v1/cards")
@@ -38,5 +38,10 @@ public class CardController {
 	@DeleteMapping(value="/api/v1/cards/{id}")
 	@ResponseBody boolean deletedCard(@PathVariable String id){
 		return cardService.deletedCard(id);
+	}
+	
+	@GetMapping(value="/api/v1/cards/{accountId}")
+	@ResponseBody List<Card> searchByAccountId(@PathVariable String accountId){
+		return cardService.searchByAccountId(accountId);
 	}
 }

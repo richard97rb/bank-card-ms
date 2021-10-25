@@ -6,8 +6,9 @@ import com.bank.card.document.Card;
 
 
 public interface CardService {
-	List<Card> getCard();
+	List<Card> getCards();
 	Card saveCard(Card card);
 	Card editCard(Card card);
 	boolean deletedCard(String id);
+	List<Card> searchByAccountId(String accountId);
 }

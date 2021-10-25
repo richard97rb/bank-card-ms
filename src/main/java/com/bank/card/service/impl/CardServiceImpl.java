@@ -7,14 +7,15 @@ import org.springframework.stereotype.Service;
 
 import com.bank.card.document.Card;
 import com.bank.card.repository.CardRepository;
+import com.bank.card.service.CardService;
 
 @Service
-public class CardServiceImpl {
+public class CardServiceImpl implements CardService {
 	@Autowired
 	private CardRepository cardRepository;
 
 	
-	public List<Card> getCard() {
+	public List<Card> getCards() {
 		return cardRepository.findAll();
 	}
 
@@ -35,5 +36,9 @@ public class CardServiceImpl {
 			e.printStackTrace();
 		}
 		return deleted;
+	}
+
+	public List<Card> searchByAccountId(String accountId) {
+		return cardRepository.findByAccountId(accountId);
 	}
 }

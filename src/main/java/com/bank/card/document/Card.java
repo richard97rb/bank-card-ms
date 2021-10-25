@@ -3,16 +3,17 @@ package com.bank.card.document;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "cards")
+@Document(collection = "card")
 public class Card {
 	
 	@Id
 	private String id;
+	private String accountId;
 	private String cardNumber;
 	private String cardName;
 	private String cvv;
-	private float year;
-	private float month;
+	private String year;
+	private String month;
 	private boolean isExpired;
 	private boolean isActive;
 	public String getId() {
@@ -20,6 +21,14 @@ public class Card {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 	public String getCardNumber() {
 		return cardNumber;
@@ -39,16 +48,16 @@ public class Card {
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
 	}
-	public float getYear() {
+	public String getYear() {
 		return year;
 	}
-	public void setYear(float year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
-	public float getMonth() {
+	public String getMonth() {
 		return month;
 	}
-	public void setMonth(float month) {
+	public void setMonth(String month) {
 		this.month = month;
 	}
 	public boolean isExpired() {
@@ -63,10 +72,11 @@ public class Card {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Card(String id, String cardNumber, String cardName, String cvv, float year, float month, boolean isExpired,
-			boolean isActive) {
+	public Card(String id, String accountId, String cardNumber, String cardName, String cvv, String year, String month,
+			boolean isExpired, boolean isActive) {
 		super();
 		this.id = id;
+		this.accountId = accountId;
 		this.cardNumber = cardNumber;
 		this.cardName = cardName;
 		this.cvv = cvv;
@@ -75,16 +85,14 @@ public class Card {
 		this.isExpired = isExpired;
 		this.isActive = isActive;
 	}
-	
 	public Card() {
-		
+		super();
 	}
 	@Override
 	public String toString() {
-		return "Card [id=" + id + ", cardNumber=" + cardNumber + ", cardName=" + cardName + ", cvv=" + cvv + ", year="
-				+ year + ", month=" + month + ", isExpired=" + isExpired + ", isActive=" + isActive + "]";
+		return "Card [id=" + id + ", accountId=" + accountId + ", cardNumber=" + cardNumber + ", cardName=" + cardName
+				+ ", cvv=" + cvv + ", year=" + year + ", month=" + month + ", isExpired=" + isExpired + ", isActive="
+				+ isActive + "]";
 	}
 	
-	
-		
 }
