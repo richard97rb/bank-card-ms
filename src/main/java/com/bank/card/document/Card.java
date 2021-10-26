@@ -1,5 +1,7 @@
 package com.bank.card.document;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,14 +18,16 @@ public class Card {
 	private String month;
 	private boolean isExpired;
 	private boolean isActive;
+	private int maxMonthtransactions;
+	private int currentTransactions;
+	private Date transactionDay;
+	private boolean maxMonthCredit;
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	
-	
 	public String getAccountId() {
 		return accountId;
 	}
@@ -72,8 +76,33 @@ public class Card {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	public int getMaxMonthtransactions() {
+		return maxMonthtransactions;
+	}
+	public void setMaxMonthtransactions(int maxMonthtransactions) {
+		this.maxMonthtransactions = maxMonthtransactions;
+	}
+	public int getCurrentTransactions() {
+		return currentTransactions;
+	}
+	public void setCurrentTransactions(int currentTransactions) {
+		this.currentTransactions = currentTransactions;
+	}
+	public Date getTransactionDay() {
+		return transactionDay;
+	}
+	public void setTransactionDay(Date transactionDay) {
+		this.transactionDay = transactionDay;
+	}
+	public boolean isMaxMonthCredit() {
+		return maxMonthCredit;
+	}
+	public void setMaxMonthCredit(boolean maxMonthCredit) {
+		this.maxMonthCredit = maxMonthCredit;
+	}
 	public Card(String id, String accountId, String cardNumber, String cardName, String cvv, String year, String month,
-			boolean isExpired, boolean isActive) {
+			boolean isExpired, boolean isActive, int maxMonthtransactions, int currentTransactions, Date transactionDay,
+			boolean maxMonthCredit) {
 		super();
 		this.id = id;
 		this.accountId = accountId;
@@ -84,6 +113,10 @@ public class Card {
 		this.month = month;
 		this.isExpired = isExpired;
 		this.isActive = isActive;
+		this.maxMonthtransactions = maxMonthtransactions;
+		this.currentTransactions = currentTransactions;
+		this.transactionDay = transactionDay;
+		this.maxMonthCredit = maxMonthCredit;
 	}
 	public Card() {
 		super();
@@ -92,7 +125,10 @@ public class Card {
 	public String toString() {
 		return "Card [id=" + id + ", accountId=" + accountId + ", cardNumber=" + cardNumber + ", cardName=" + cardName
 				+ ", cvv=" + cvv + ", year=" + year + ", month=" + month + ", isExpired=" + isExpired + ", isActive="
-				+ isActive + "]";
+				+ isActive + ", maxMonthtransactions=" + maxMonthtransactions + ", currentTransactions="
+				+ currentTransactions + ", transactionDay=" + transactionDay + ", maxMonthCredit=" + maxMonthCredit
+				+ "]";
 	}
+	
 	
 }
